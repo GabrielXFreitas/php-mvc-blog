@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-9 col-md-12">
+            <h1>{{post.titulo}}</h1>
+
+            <div class="my-3">
+                <small class="text-muted">Por {{post.usuario.nome}}, {{ contarTempo(post.cadastrado_em) }} em {{post.categorias.titulo}}</small>
+            </div>
+            <div class="texto">
+                <p>{{post.texto}}</p>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            {% include 'sidebar.html'%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

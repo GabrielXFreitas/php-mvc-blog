@@ -1,0 +1,20 @@
+# Dependências do Composer (rodar "composer install" para restaurar)
+/vendor/
+ 
+# Configuração com credenciais do banco de dados
+/sistema/configuracao.php
+ 
+# Uploads enviados pelos usuários
+/templates/admin/assets/img/uploads/
+ 
+# Cache do Twig (gerado automaticamente)
+/cache/
+ 
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+ 
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
