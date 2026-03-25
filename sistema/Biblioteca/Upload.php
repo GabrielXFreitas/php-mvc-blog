@@ -9,6 +9,8 @@ class Upload
     public $subDiretorio;
     public $nome;
     public $diretorio;
+    public $resultado;
+    public $erro;
 
     public function __construct(string $diretorio)
     {
@@ -17,6 +19,16 @@ class Upload
         if (!file_exists($this->diretorio . DIRECTORY_SEPARATOR . $this->arquivo) && !is_dir($this->diretorio . DIRECTORY_SEPARATOR . $this->arquivo)) {
             mkdir($this->diretorio, 0755);
         }
+    }
+
+    public function getResultado(): ?string
+    {
+        return $this->resultado;
+    }
+
+    public function getErro(): ?string
+    {
+        return $this->erro;
     }
 
     public function arquivo(array $arquivo, string $nome = null, string $subDiretorio = null): void
@@ -49,9 +61,10 @@ class Upload
     public function moverArquivo()
     {
         if (move_uploaded_file($this->arquivo['tmp_name'], $this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio . DIRECTORY_SEPARATOR . $this->nome)) {
-            echo $this->nome . ' foi movido com sucesso!';
+            $this->resultado = $this->nome;
         } else {
-            echo 'Erro no upload!';
+            $this->resultado = null;
+            $this->erro = 'Erro ao enviar arquivo';
         }
     }
 }

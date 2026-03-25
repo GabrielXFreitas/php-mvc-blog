@@ -12,6 +12,13 @@ if(!empty($arquivo = $_FILES)){
     $arquivo = $_FILES['arquivo'];
     $upload->arquivo($arquivo, 'textos');
 }
+if($upload->getResultado()){
+    echo 'Arquivo enviado com sucesso!';
+}else{
+    $upload->getErro();
+}
+
+
 ?>
 
 <form method="post" enctype="multipart/form-data">
