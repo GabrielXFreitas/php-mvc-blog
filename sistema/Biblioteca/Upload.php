@@ -5,15 +5,15 @@ namespace sistema\Biblioteca;
 class Upload
 {
 
-    public $arquivo;
-    public $subDiretorio;
-    public $nome;
-    public $diretorio;
-    public $tamanho;
-    public $resultado;
-    public $erro;
+    private ?array $arquivo;
+    private ?string $subDiretorio;
+    private ?string $nome;
+    private ?string $diretorio;
+    private ?int $tamanho;
+    private ?string $resultado;
+    private ?string $erro;
 
-    public function __construct(string $diretorio)
+    private function __construct(string $diretorio)
     {
         $this->diretorio = $diretorio ?? 'uploads';
 
@@ -56,14 +56,14 @@ class Upload
         }
     }
 
-    public function criarSubDiretorio()
+    private function criarSubDiretorio()
     {
         if (!file_exists($this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio) && !is_dir($this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio)) {
             mkdir($this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio, 0755);
         }
     }
 
-    public function renomearArquivo()
+    private function renomearArquivo()
     {
         $arquivo = $this->nome . strrchr($this->arquivo['name'], '.');
         if (file_exists($this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio . DIRECTORY_SEPARATOR . $this->nome)) {
@@ -72,7 +72,7 @@ class Upload
         $this->nome = $arquivo;
     }
 
-    public function moverArquivo()
+    private function moverArquivo()
     {
         if (move_uploaded_file($this->arquivo['tmp_name'], $this->diretorio . DIRECTORY_SEPARATOR . $this->subDiretorio . DIRECTORY_SEPARATOR . $this->nome)) {
             $this->resultado = $this->nome;
