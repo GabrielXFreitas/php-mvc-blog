@@ -139,8 +139,8 @@ class AdminPosts extends AdminControlador
                 Helpers::redirecionar('admin/posts/listar');
             } else {
                 if ($post->deletar()) {
-                    if ($post->capa && file_exists("uploads/imagens/{$post->capa}")) {
-                        unlink("uploads/imagens/{$post->capa}");
+                        if ($post->capa && file_exists("uploads/imagens/{$post->capa}")) {
+                            unlink("uploads/imagens/{$post->capa}");
                         }
                         $post->capa = $this->capa;
                     $this->mensagem->sucesso('Post deletado com sucesso!')->flash();

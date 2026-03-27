@@ -9,6 +9,13 @@
             <div class="my-3">
                 <small class="text-muted">Por {{post.usuario.nome}}, {{ contarTempo(post.cadastrado_em) }} em {{post.categorias.titulo}}</small>
             </div>
+            <a href="{{url('uploads/imagens/'~post.capa)}}"
+               data-fancybox="gallery"
+               data-caption="Optional caption"
+               >
+                <img src="{{url('uploads/imagens/'~post.capa)}}" alt="{{post.titulo}}" title="{{post.titulo}}" class="classePequena">
+            </a>
+
             <div class="texto">
                 <p>{{post.texto}}</p>
             </div>
