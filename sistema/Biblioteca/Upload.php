@@ -5,15 +5,15 @@ namespace sistema\Biblioteca;
 class Upload
 {
 
-    private ?array $arquivo;
+    private ?array $arquivo = null;
     private ?string $subDiretorio;
     private ?string $nome;
     private ?string $diretorio;
     private ?int $tamanho;
-    private ?string $resultado;
+    private ?string $resultado = null;
     private ?string $erro;
 
-    private function __construct(string $diretorio)
+    public function __construct(string $diretorio)
     {
         $this->diretorio = $diretorio ?? 'uploads';
 

@@ -2,6 +2,7 @@
 
 namespace sistema\Controlador\Admin;
 
+use sistema\Biblioteca\Upload;
 use sistema\Modelo\PostModelo;
 use sistema\Modelo\CategoriaModelo;
 use sistema\Nucleo\Helpers;
@@ -13,6 +14,7 @@ use sistema\Nucleo\Helpers;
  */
 class AdminPosts extends AdminControlador
 {
+    private string $capa;
 
     public function listar(): void
     {
@@ -44,6 +46,7 @@ class AdminPosts extends AdminControlador
                 $post->slug = Helpers::slug($dados['titulo']);
                 $post->texto = $dados['texto'];
                 $post->status = $dados['status'];
+                $post->capa = $this->capa;
 
                 if ($post->salvar()) {
                     $this->mensagem->sucesso('Post cadastrado com sucesso')->flash();
@@ -97,6 +100,17 @@ class AdminPosts extends AdminControlador
      */
     public function validarDados(array $dados): bool
     {
+        if(!empty($_FILES['capa'])){
+            $upload = new Upload('diretorio');
+            $upload->arquivo($_FILES['capa'], Helpers::slug($dados['titulo']), 'imagens'); 
+            if($upload->getResultado()){
+                $this->capa = $upload->getResultado();
+            }else{
+                $this->mensagem->alerta($upload->getErro());
+                return false;
+            }
+        }   
+
         if (empty($dados['titulo'])) {
             $this->mensagem->alerta('Escreva um título para o Post!')->flash();
             return false;

@@ -18,7 +18,9 @@
 
 <div class="card border-0 shadow-sm">
     <div class="card-body">
-       <form action="{% if post.id %}{{url('admin/posts/editar/'~post.id)}}{%else%}{{url('admin/posts/cadastrar')}}{%endif%}" method="post">
+       <form action="{% if post.id %}{{url('admin/posts/editar/'~post.id)}}{%else%}{{url('admin/posts/cadastrar')}}{%endif%}" method="post" enctype="multipart/form-data">
+        <input type="file" accept=".png, .jpg, .jpeg" name="capa"> 
+        
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
                 <input type="text" name="titulo" id="titulo" value="{{post.titulo}}" class="form-control">
@@ -49,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
              <input type="submit" class="btn btn-primary" value="{% if post.id %}Atualizar{%else%}Cadastrar{%endif%}">
         </form>
     </div>    
