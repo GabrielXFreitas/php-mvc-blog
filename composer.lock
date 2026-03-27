@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a732df8ec8fa52f665bc12aa8e4d4aa",
+    "content-hash": "3930d1624aaab3fd3f96214b740f8c81",
     "packages": [
         {
             "name": "digitalnature/php-ref",
@@ -353,6 +353,53 @@
                 }
             ],
             "time": "2022-09-28T08:43:25+00:00"
+        },
+        {
+            "name": "verot/class.upload.php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verot/class.upload.php.git",
+                "reference": "95414a649727929c3fd11582f663b12b48407a7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/95414a649727929c3fd11582f663b12b48407a7c",
+                "reference": "95414a649727929c3fd11582f663b12b48407a7c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/class.upload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Verot",
+                    "email": "colin@verot.net"
+                }
+            ],
+            "description": "This PHP class uploads files and manipulates images very easily.",
+            "homepage": "http://www.verot.net/php_class_upload.htm",
+            "keywords": [
+                "gd",
+                "upload"
+            ],
+            "support": {
+                "email": "colin@verot.net",
+                "issues": "https://github.com/verot/class.upload.php/issues",
+                "source": "https://github.com/verot/class.upload.php/tree/master"
+            },
+            "time": "2024-09-10T19:03:59+00:00"
         }
     ],
     "packages-dev": [],
@@ -360,7 +407,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "digitalnature/php-ref": 20,
-        "pecee/simple-router": 20
+        "pecee/simple-router": 20,
+        "verot/class.upload.php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
