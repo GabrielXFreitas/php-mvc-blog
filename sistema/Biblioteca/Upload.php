@@ -39,14 +39,14 @@ class Upload
         $this->subDiretorio = $subDiretorio ?? 'arquivos';
         $this->tamanho = $tamanho ?? 1;
 
-        $tiposValidos = ['aplication/pdf', 'text/plain'];
-        $extensoesValidas = ['png','txt', 'pdf'];
+        //$tiposValidos = ['aplication/pdf', 'text/plain', 'Arquivo JPEG (.jpeg)'];
+        $extensoesValidas = ['png', 'jpg', 'jpeg'];
         $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
 
         if(!in_array($extensao, $extensoesValidas)){
             $this->erro = 'Extensão inválida do arquivo! Apenas: '. implode(',', $extensoesValidas);
-        }elseif(!in_array($arquivo['type'], $tiposValidos )){
-            $this->erro = 'Tipo de arquivo inválido!';
+        //}elseif(!in_array($arquivo['type'], $tiposValidos )){
+        //    $this->erro = 'Tipo de arquivo inválido!';
         }elseif($arquivo['size'] > $this->tamanho*(1024*1024)){
             $this->erro = "Tamanho do arquivo maior que {$this->tamanho}MB";
         }else{
